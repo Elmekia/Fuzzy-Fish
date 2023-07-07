@@ -24,7 +24,7 @@ import org.springframework.data.jpa.domain.Specification;
 @AllArgsConstructor
 @EqualsAndHashCode
 @ToString
-@Table(schema = "FF",name = "price")
+@Table(schema = "FF", name = "price")
 @Builder
 public class Price {
 

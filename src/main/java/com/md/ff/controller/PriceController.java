@@ -7,6 +7,7 @@ import jakarta.validation.Valid;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 @RestController
 @Validated
 public class PriceController {
@@ -18,7 +19,7 @@ public class PriceController {
   }
 
   @GetMapping("/prices")
-  PriceResponseDto getPrice(@Valid PriceFilterDto filters){
+  PriceResponseDto getPrice(@Valid PriceFilterDto filters) {
     return this.priceService.getPrice(filters);
   }
 

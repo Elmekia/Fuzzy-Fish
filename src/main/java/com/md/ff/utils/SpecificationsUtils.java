@@ -5,7 +5,7 @@ import org.springframework.data.jpa.domain.Specification;
 
 public final class SpecificationsUtils {
 
-  private SpecificationsUtils(){
+  private SpecificationsUtils() {
     throw new IllegalStateException("Utility class");
   }
 

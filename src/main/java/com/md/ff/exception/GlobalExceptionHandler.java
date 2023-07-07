@@ -14,32 +14,33 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<Map<String, String>> handleValidationExceptions(MethodArgumentNotValidException ex) {
-        BindingResult bindingResult = ex.getBindingResult();
-        Map<String, String> errors = new HashMap<>();
+  @ExceptionHandler(MethodArgumentNotValidException.class)
+  public ResponseEntity<Map<String, String>> handleValidationExceptions(
+      MethodArgumentNotValidException ex) {
+    BindingResult bindingResult = ex.getBindingResult();
+    Map<String, String> errors = new HashMap<>();
 
-        for (FieldError fieldError : bindingResult.getFieldErrors()) {
-            errors.put(fieldError.getField(), fieldError.getDefaultMessage());
-        }
-
-        return ResponseEntity.badRequest().body(errors);
+    for (FieldError fieldError : bindingResult.getFieldErrors()) {
+      errors.put(fieldError.getField(), fieldError.getDefaultMessage());
     }
 
-    @ExceptionHandler(BindException.class)
-    public ResponseEntity<Map<String, String>> handleBindExceptions(BindException ex) {
-        BindingResult bindingResult = ex.getBindingResult();
-        Map<String, String> errors = new HashMap<>();
+    return ResponseEntity.badRequest().body(errors);
+  }
 
-        for (FieldError fieldError : bindingResult.getFieldErrors()) {
-            errors.put(fieldError.getField(), fieldError.getDefaultMessage());
-        }
+  @ExceptionHandler(BindException.class)
+  public ResponseEntity<Map<String, String>> handleBindExceptions(BindException ex) {
+    BindingResult bindingResult = ex.getBindingResult();
+    Map<String, String> errors = new HashMap<>();
 
-        return ResponseEntity.badRequest().body(errors);
+    for (FieldError fieldError : bindingResult.getFieldErrors()) {
+      errors.put(fieldError.getField(), fieldError.getDefaultMessage());
     }
 
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<String> handleGenericException(Exception ex) {
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal Server Error");
-    }
+    return ResponseEntity.badRequest().body(errors);
+  }
+
+  @ExceptionHandler(Exception.class)
+  public ResponseEntity<String> handleGenericException(Exception ex) {
+    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal Server Error");
+  }
 }

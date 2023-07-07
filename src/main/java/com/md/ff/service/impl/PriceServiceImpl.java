@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
 public class PriceServiceImpl implements PriceService {
 
   private final PriceRepository priceRepository;
-  private final String SORT_BY_PRIORITY = "priority";
+  private static final String SORT_BY_PRIORITY = "priority";
 
   public PriceServiceImpl(PriceRepository priceRepository) {
     this.priceRepository = priceRepository;

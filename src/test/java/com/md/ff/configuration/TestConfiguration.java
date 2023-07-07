@@ -8,6 +8,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 @Configuration
 public class TestConfiguration {
+
   private final WebApplicationContext webApplicationContext;
 
   public TestConfiguration(WebApplicationContext webApplicationContext) {
